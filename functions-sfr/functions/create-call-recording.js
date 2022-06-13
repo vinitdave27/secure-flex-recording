@@ -1,7 +1,7 @@
 const TokenValidator = require('twilio-flex-token-validator').functionValidator;
 
 exports.handler = TokenValidator(async function (context, event, callback) {
-	const { AWS_API_URL } = context;
+	const { AWS_API_GATEWAY_BASE_URL } = context;
 	const client = context.getTwilioClient();
 	const response = new Twilio.Response();
 
@@ -21,7 +21,7 @@ exports.handler = TokenValidator(async function (context, event, callback) {
 	try {
 		const recordingParams = {
 			recordingChannels: 'dual',
-			recordingStatusCallback: AWS_API_URL,
+			recordingStatusCallback: `${AWS_API_GATEWAY_BASE_URL}/dev/call-recording`,
 			recordingStatusCallbackEvent: ['completed'],
 		};
 

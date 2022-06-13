@@ -60,7 +60,7 @@ const VideoComponent = ({ task, manager, channelDefinition, dispatch, icon, icon
 	const createComposition = (roomSid) => {
 		return axios({
 			method: 'POST',
-			url: `${process.env.REACT_APP_FUNCTIONS_URL}/create-video-composition`,
+			url: `${process.env.REACT_APP_TWILIO_FUNCTIONS_BASE_URL}/create-video-composition`,
 			data: { roomSid },
 		});
 	};
@@ -82,7 +82,7 @@ const VideoComponent = ({ task, manager, channelDefinition, dispatch, icon, icon
 			const workerState = flexState && flexState.worker;
 			const accountSid = workerState && workerState.source.accountSid;
 
-			const compositionUrl = `${process.env.REACT_APP_AWS_API_URL}?RecordingSid=${compositionSid}&Type=video`;
+			const compositionUrl = `${process.env.REACT_APP_AWS_API_GATEWAY_URL}?RecordingSid=${compositionSid}&Type=video`;
 			//const compositionUrl = `https://function-secure-video-recording-6772-dev.twil.io/index.html?RecordingSid=${compositionSid}&Type=video`;
 			const mediaObj = {
 				type: 'Embedded',

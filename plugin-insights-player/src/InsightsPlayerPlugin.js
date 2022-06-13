@@ -27,7 +27,7 @@ export default class InsightsPlayerPlugin extends FlexPlugin {
 
 		flex.Actions.replaceAction('InsightsPlayer:play', async (payload, original) => {
 			const { conversationDetails, segmentMedia } = await fetch(
-				`${process.env.REACT_APP_FUNCTIONS_BASE_URL}/fetch-task-details-for-segment`,
+				`${process.env.REACT_APP_TWILIO_FUNCTIONS_BASE_URL}/fetch-task-details-for-segment`,
 				{
 					method: 'POST',
 					headers: { Accept: 'application/json', 'Content-Type': 'application/json' },

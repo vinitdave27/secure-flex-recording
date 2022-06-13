@@ -5,8 +5,7 @@ function getCompositionPromise(context, event, client) {
 				roomSid: event.roomSid,
 				audioSources: '*',
 				videoLayout: { grid: { video_sources: ['*'] } },
-				//statusCallback: `https://${context.DOMAIN_NAME}/callback-video-composition`,
-				statusCallback: `https://zok3papu2d.execute-api.us-east-1.amazonaws.com/dev/video-recording`,
+				statusCallback: `${context.AWS_API_GATEWAY_BASE_URL}/dev/video-recording`,
 				format: 'mp4',
 			})
 			.then((composition) => resolve(composition))

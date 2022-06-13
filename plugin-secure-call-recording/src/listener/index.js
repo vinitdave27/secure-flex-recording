@@ -7,7 +7,7 @@ const REACT_APP_RECORD_CHANNEL = process.env.REACT_APP_RECORD_CHANNEL.toLowerCas
 
 const startCallRecording = async (callSid) => {
 	console.debug('Creating recording for call SID:', callSid);
-	const fetchUrl = `https://${process.env.REACT_APP_SERVERLESS_DOMAIN}/create-recording`;
+	const fetchUrl = `https://${process.env.REACT_APP_TWILIO_FUNCTIONS_BASE_URL}/create-recording`;
 
 	const fetchBody = {
 		Token: manager.store.getState().flex.session.ssoTokenPayload.token,
@@ -65,7 +65,7 @@ const addCallDataToTask = async (task, callSid, recording) => {
 		// const twilioApiBase = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}`;
 		// const recordingUrl = `${twilioApiBase}/Recordings/${recordingSid}`;
 
-		const recordingUrl = `${process.env.REACT_APP_AWS_API_URL}?RecordingSid=${recordingSid}&Type=calls`;
+		const recordingUrl = `${process.env.REACT_APP_AWS_API_GATEWAY_URL}?RecordingSid=${recordingSid}&Type=calls`;
 
 		const reservationAttributes = attributes.reservation_attributes || {};
 
